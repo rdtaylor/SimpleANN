@@ -9,8 +9,15 @@ Usage
 
 ## Instantiate an ANN object:
 
+```
 val ann = new ANN(layout, eta, activator)
-e.g.: val ann = new ANN(List(2, 4, 1), 1.0, sigmoid)
+```
+
+e.g.:
+
+```
+val ann = new ANN(List(2, 4, 1), 1.0, sigmoid)
+```
 
 The first argument, layout, provides the number of nodes and layers in the network.  For example, the above list of integers -- List(2, 4, 1) -- means a network consisting of three layers with two nodes in the input layer, four nodes in the hidden layer, and one node in the output layer.  The number of nodes in the input layer must match the number of intended inputs while the same is true of the output layer.
 
@@ -20,8 +27,13 @@ The third argument, activator, is the activation function to be used by the netw
 
 ## Train the network:
 
+```
 ann.train(inputs, expected_out, iter=5000)
+```
+
 e.g. to train binary "and" on the first and second inputs as well as a binary "and" on the third and fourth inputs:
+
+```
   val inputs: ExpectedValues = List(
     List(1, 1, 1, 1)
     , List(1, 1, 0, 0)
@@ -39,6 +51,7 @@ e.g. to train binary "and" on the first and second inputs as well as a binary "a
     , List(0, 0)
     )
   ann.train(inputs, expected_out)
+```
 
 The first argument, inputs, contains a list of lists with desired inputs for the network to learn.  The number of nodes in the input layer must equal the number of inputs in each nested list.
 
@@ -48,9 +61,15 @@ The last argument, iter, is the number of iterations of training to run.  The de
 
 ## Predict a value:
 
+```
 ann.getOutput(input)
+```
+
 e.g.:
+
+```
   val outputs = ann.getOutput(List(1, 0))
+```
 
 (See tests (src/test) for further examples).
 
